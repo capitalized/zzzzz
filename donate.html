@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate to Swastikat</title>
+<link rel="icon" type="image/png" href="https://i.pics.rs/EEJBi.png">
+<meta name="icon" content="https://i.pics.rs/EEJBi.png">
+<style>
+    body {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    h1 {
+        color: hotpink;
+    }
+    .donate-button, button {
+        display: inline-flex;
+        align-items: center;
+        background-color: hotpink;
+        color: #000;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+    }
+    .donate-button:hover, button:hover {
+        background-color: #ff69b4;
+    }
+    .donate-button img, button img {
+        width: 24px;
+        margin-right: 10px;
+    }
+    .crypto-info {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .crypto-info .content {
+        background-color: #444;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .crypto-info .content p {
+        margin: 10px 0;
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+    .crypto-address {
+        color: orange;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .close-button {
+        background-color: hotpink;
+        color: #000;
+        padding: 5px 10px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+    }
+    .close-button:hover {
+        background-color: #ff69b4;
+    }
+    .donation-form input, .donation-form textarea {
+        width: calc(100% - 40px);
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        box-sizing: border-box;
+    }
+    .highlight {
+        animation: glow 1s infinite alternate;
+    }
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 10px hotpink, 0 0 20px hotpink, 0 0 30px hotpink;
+        }
+        to {
+            text-shadow: 0 0 20px hotpink, 0 0 30px hotpink, 0 0 40px hotpink;
+        }
+    }
+    .donation-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .donation-form button {
+        width: calc(33.33% - 10px);
+        margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+        .donation-form button {
+            width: calc(50% - 10px);
+        }
+    }
+    @media (max-width: 400px) {
+        .donation-form button {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Support Our Cause</h1>
+    <p>Your generous donation helps us continue our mission.</p>
+    <p>We regret to inform you that we are currently unable to upload additional content (except for the first category) due to limitations on our time and resources. </br></br>We recognize the importance of exposing the brutality of these animals in those category 2 and 3, which deserve more comprehensive documentation.</br></b>
+    </br>
+        Thanks to your generous contributions, we can employ dedicated personnel to focus on collecting and uploading files in these important areas. Your support will enable us to expand our efforts and make a significant impact.
+        
+</br>
+</br>
+        Please consider making a donation today to help us continue our mission. Together we can make a difference.
+            </br>
+    </br>
+        Best,</br>
+        Kate & Salwa ♡
+    </br>
+    <div class="donation-form">
+        <input type="number" id="donationAmount" placeholder="Enter amount in USD" min="1">
+        <input type="text" id="donorName" placeholder="Your Name (Leave empty for Anonymous)">
+        <textarea id="donorMessage" maxlength="40" placeholder="Your Message (Max 40 characters)"></textarea>
+        <button id="generateButtonBTC"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC">Donate BTC</button>
+        <button id="generateButtonETH"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">Donate ETH</button>
+        <button id="generateButtonSOL"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL">Donate SOL</button>
+        <button id="generateButtonXMR"><img src="https://cryptologos.cc/logos/monero-xmr-logo.png" alt="XMR">Donate XMR</button>
+        <button id="generateButtonLTC"><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png" alt="LTC">Donate LTC</button>
+        <button id="generateButtonTRX"><img src="https://cryptologos.cc/logos/tron-trx-logo.png" alt="TRX">Donate TRX</button>
+    </div>
+
+    <div id="btcDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="btcAmount"></span> BTC to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('bc1qe6pjz4jhlhq7rpx9f97qh756w557mtp3zdtec0')">bc1qe6pjz4jhlhq7rpx9f97qh756w557mtp3zdtec0</p>
+            <canvas id="btcQrCode"></canvas>
+            <p>Transaction ID: <span id="btcTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+
+    <div id="ethDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="ethAmount"></span> ETH to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('0xDb105c17b6fb692827A228292A0e2448189ddab1')">0xDb105c17b6fb692827A228292A0e2448189ddab1</p>
+            <canvas id="ethQrCode"></canvas>
+            <p>Transaction ID: <span id="ethTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+
+    <div id="solDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="solAmount"></span> SOL to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('DocdffWLkFuDVx3AduAsurnCrjDkCNhB1dH6F7hkBBWe')">DocdffWLkFuDVx3AduAsurnCrjDkCNhB1dH6F7hkBBWe</p>
+            <canvas id="solQrCode"></canvas>
+            <p>Transaction ID: <span id="solTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+
+    <div id="xmrDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="xmrAmount"></span> XMR to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('8BByrvF2G65jrxw3kwFGb9VwVmWrF3bXa1ACk1Keb9LDfFZeiVPdT7K4hjHLq8DGSE5gtgB3sUV4ocqByvr7EfW6AYbgVV1')">8BByrvF2G65jrxw3kwFGb9VwVmWrF3bXa1ACk1Keb9LDfFZeiVPdT7K4hjHLq8DGSE5gtgB3sUV4ocqByvr7EfW6AYbgVV1</p>
+            <canvas id="xmrQrCode"></canvas>
+            <p>Transaction ID: <span id="xmrTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+
+    <div id="ltcDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="ltcAmount"></span> LTC to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('ltc1qq8csllgpfsyx2y8ec6lmvsyg2qsw4f28u3dc9f')">ltc1qq8csllgpfsyx2y8ec6lmvsyg2qsw4f28u3dc9f</p>
+            <canvas id="ltcQrCode"></canvas>
+            <p>Transaction ID: <span id="ltcTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+
+    <div id="trxDonation" class="crypto-info">
+        <div class="content">
+            <p>Send EXACTLY <span id="trxAmount"></span> TRX to our address:</p>
+            <p class="crypto-address" onclick="copyToClipboard('TQyShmM5MAeNinPChJEniMAEVqWJZbQG4a')">TQyShmM5MAeNinPChJEniMAEVqWJZbQG4a</p>
+            <canvas id="trxQrCode"></canvas>
+            <p>Transaction ID: <span id="trxTransactionId"></span></p>
+            <p><a href="#" class="close-button">Close</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+    shuffleBackground();
+});
+
+function shuffleBackground() {
+    var backgrounds = [
+        'https://i.pics.rs/VVksF.png',
+        'https://i.pics.rs/bbcTZ.png'
+    ];
+    var randomIndex = Math.floor(Math.random() * backgrounds.length);
+    var selectedBackground = backgrounds[randomIndex];
+    document.body.style.backgroundImage = 'url("' + selectedBackground + '")';
+}
+
+document.getElementById('generateButtonBTC').addEventListener('click', function() {
+    generateCryptoDonation('bitcoin', 'bitcoin:bc1qe6pjz4jhlhq7rpx9f97qh756w557mtp3zdtec0', 'btcAmount', 'btcQrCode', 'btcDonation');
+});
+
+document.getElementById('generateButtonETH').addEventListener('click', function() {
+    generateCryptoDonation('ethereum', 'ethereum:0xDb105c17b6fb692827A228292A0e2448189ddab1', 'ethAmount', 'ethQrCode', 'ethDonation');
+});
+
+document.getElementById('generateButtonSOL').addEventListener('click', function() {
+    generateCryptoDonation('solana', 'solana:DocdffWLkFuDVx3AduAsurnCrjDkCNhB1dH6F7hkBBWe', 'solAmount', 'solQrCode', 'solDonation');
+});
+
+document.getElementById('generateButtonXMR').addEventListener('click', function() {
+    generateCryptoDonation('monero', 'monero:8BByrvF2G65jrxw3kwFGb9VwVmWrF3bXa1ACk1Keb9LDfFZeiVPdT7K4hjHLq8DGSE5gtgB3sUV4ocqByvr7EfW6AYbgVV1', 'xmrAmount', 'xmrQrCode', 'xmrDonation');
+});
+
+document.getElementById('generateButtonLTC').addEventListener('click', function() {
+    generateCryptoDonation('litecoin', 'litecoin:ltc1qq8csllgpfsyx2y8ec6lmvsyg2qsw4f28u3dc9f', 'ltcAmount', 'ltcQrCode', 'ltcDonation');
+});
+
+document.getElementById('generateButtonTRX').addEventListener('click', function() {
+    generateCryptoDonation('tron', 'tron:TQyShmM5MAeNinPChJEniMAEVqWJZbQG4a', 'trxAmount', 'trxQrCode', 'trxDonation');
+});
+
+function generateCryptoDonation(cryptoType, address, amountSpanId, qrCodeId, donationDivId) {
+    var donationAmount = document.getElementById('donationAmount').value;
+    if (!donationAmount || donationAmount <= 0) {
+        alert('Please enter a valid donation amount in USD.');
+        return;
+    }
+
+    fetchCryptoRate(cryptoType).then(rate => {
+        var cryptoAmount = (donationAmount / rate).toFixed(8);
+        document.getElementById(amountSpanId).textContent = cryptoAmount;
+
+        var qr = new QRious({
+            element: document.getElementById(qrCodeId),
+            value: address + '?amount=' + cryptoAmount
+        });
+
+        var transactionId = generateTransactionId();
+        document.getElementById(donationDivId).querySelector('span[id$="TransactionId"]').textContent = transactionId;
+
+        document.getElementById(donationDivId).style.display = 'block';
+    }).catch(error => {
+        alert('Error fetching the cryptocurrency rate. Please try again later.');
+        console.error('Error fetching the cryptocurrency rate:', error);
+    });
+}
+
+function fetchCryptoRate(cryptoType) {
+    var apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoType}&vs_currencies=usd`;
+
+    return fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data[cryptoType] && data[cryptoType].usd) {
+                return data[cryptoType].usd;
+            } else {
+                throw new Error('Invalid response from API');
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            throw error;
+        });
+}
+
+function generateTransactionId() {
+    return Math.random().toString(36).substr(2, 9) + Math.random().toString(36).substr(2, 9);
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Address copied to clipboard!');
+    }, function(err) {
+        console.error('Could not copy text: ', err);
+    });
+}
+
+document.querySelectorAll('.close-button').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        button.closest('.crypto-info').style.display = 'none';
+    });
+});
+</script>
+
+</body>
+</html>

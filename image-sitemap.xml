@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.Shlomoganda.com/page1</loc>
+    <image:image>
+      <image:loc>https://www.Shlomoganda.com/images/image1.jpg</image:loc>
+      <image:caption>Shlomoganda Image 1 Caption</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.Shlomoganda.com/images/image2.jpg</image:loc>
+      <image:caption>Shlomoganda Image 2 Caption</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.Shlomoganda.com/page2</loc>
+    <image:image>
+      <image:loc>https://www.Shlomoganda.com/images/image3.jpg</image:loc>
+      <image:caption>Shlomoganda Image 3 Caption</image:caption>
+    </image:image>
+  </url>
+</urlset>
